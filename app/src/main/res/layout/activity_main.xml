@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/boton_blanco"
     tools:context=".MainActivity">
 
     <ImageView
@@ -17,14 +18,16 @@
         app:srcCompat="@drawable/img" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btn_empecemos"
+        android:layout_width="246dp"
+        android:layout_height="59dp"
         android:text="Empecemos"
+        android:textSize="20sp"
+        android:theme="@style/boton_blanco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.284" />
+        app:layout_constraintVertical_bias="0.324" />
 </androidx.constraintlayout.widget.ConstraintLayout>

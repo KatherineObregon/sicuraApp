@@ -13,6 +13,11 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="mdcTheme">
+        <item name="cornerSize">20dp</item>
+        <item name="cornerFamily">cut</item>
+    </style>
     
     <style name="SplashTheme" parent="Theme.SicuraApp">
         <item name="android:windowBackground">@drawable/splash_screen</item>
@@ -20,6 +25,26 @@
 
     <style name="launcher" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/launcher_screen</item>
+    </style>
+    <style name="launcher2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/launcher_screen2</item>
+    </style>
+
+    <style name="boton_blanco" parent="Theme.Material3.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#F5F5F6</item>
+        <item name="colorPrimaryVariant">#F5F5F6</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="shapeAppearance">@style/mdcTheme</item>
+
+    </style>
+
+    <style name="boton_indigo" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/ic_logo_letras_transparente_background</item>
+        <item name="colorPrimaryVariant">#FFD21F</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="shapeAppearance">@style/mdcTheme</item>
     </style>
 
 
