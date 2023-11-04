@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/boton_circulo"
+    tools:context=".Home">
+
+    <Button
+        android:id="@+id/btn_peligro"
+        android:layout_width="263dp"
+        android:layout_height="283dp"
+        android:layout_marginTop="170dp"
+        android:text="Estoy en peligro"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:theme="@style/boton_circulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="244dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="72dp"
+        android:text="Más opciones"
+        android:textSize="20sp"
+        android:theme="@style/boton_blanco"
+        app:layout_constraintEnd_toEndOf="@+id/btn_peligro"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="@+id/btn_peligro"
+        app:layout_constraintTop_toBottomOf="@+id/btn_peligro" />
+</androidx.constraintlayout.widget.ConstraintLayout>

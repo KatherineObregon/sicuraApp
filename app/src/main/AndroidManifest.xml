@@ -13,8 +13,31 @@
         android:theme="@style/Theme.SicuraApp"
         tools:targetApi="31">
         <activity
-            android:name=".RegistrarUsuario"
+            android:name=".MasOpciones"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Home"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".IniciarSesion"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".RegistrarUsuario"
+            android:exported="false"
+            android:label="Registro"
+            android:parentActivityName=".Launcher2">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

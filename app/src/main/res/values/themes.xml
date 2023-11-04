@@ -18,6 +18,11 @@
         <item name="cornerSize">20dp</item>
         <item name="cornerFamily">cut</item>
     </style>
+
+    <style name="btnCircularTheme">
+        <item name="cornerSize">50dp</item>
+        <item name="cornerFamily">cut</item>
+    </style>
     
     <style name="SplashTheme" parent="Theme.SicuraApp">
         <item name="android:windowBackground">@drawable/splash_screen</item>
@@ -39,12 +44,33 @@
 
     </style>
 
+    <style name="vista_clara" parent="Theme.Material3.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/ic_logo_letras_transparente_background</item>
+        <item name="colorPrimaryVariant">#FFD21F</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="shapeAppearance">@style/mdcTheme</item>
+    </style>
+
+    <style name="home" parent="Theme.SicuraApp">
+        <item name="android:windowBackground">@drawable/launcher_screen</item>
+    </style>
+
+
     <style name="boton_indigo" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/ic_logo_letras_transparente_background</item>
         <item name="colorPrimaryVariant">#FFD21F</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="shapeAppearance">@style/mdcTheme</item>
+    </style>
+
+    <style name="boton_circulo" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#C6C4E8</item>
+        <item name="colorPrimaryVariant">#FFD21F</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="shapeAppearance">@style/btnCircularTheme</item>
     </style>
 
 

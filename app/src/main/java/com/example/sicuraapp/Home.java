@@ -4,13 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class RegistrarUsuario extends AppCompatActivity {
+public class Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        setTheme(R.style.vista_clara);
+        setTheme(R.style.home);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrar_usuario);
+        setContentView(R.layout.activity_home);
     }
 }
