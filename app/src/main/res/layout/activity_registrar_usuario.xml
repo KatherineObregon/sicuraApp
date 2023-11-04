@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrarUsuario">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nombreUsuarioLayout"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:hint="Nombre de usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputNombreUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="26dp"
+            tools:layout_editor_absoluteY="32dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/CorreoElectronicoLayout"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:hint="Correo Electrónico"
+        app:layout_constraintEnd_toEndOf="@+id/nombreUsuarioLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nombreUsuarioLayout"
+        app:layout_constraintTop_toBottomOf="@+id/nombreUsuarioLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputCorreoElectronicoInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="24dp"
+            tools:layout_editor_absoluteY="116dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/CelularLayout"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:hint="Celular"
+        app:layout_constraintEnd_toEndOf="@+id/CorreoElectronicoLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/CorreoElectronicoLayout"
+        app:layout_constraintTop_toBottomOf="@+id/CorreoElectronicoLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputCelular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number|phone"
+            tools:layout_editor_absoluteX="24dp"
+            tools:layout_editor_absoluteY="116dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Password1Layout"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:hint="Contraseña"
+        app:layout_constraintEnd_toEndOf="@+id/CelularLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/CelularLayout"
+        app:layout_constraintTop_toBottomOf="@+id/CelularLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number|textPassword"
+            tools:layout_editor_absoluteX="24dp"
+            tools:layout_editor_absoluteY="116dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Password2Layout"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:hint="Repita la contraseña"
+        app:layout_constraintEnd_toEndOf="@+id/Password1Layout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Password1Layout"
+        app:layout_constraintTop_toBottomOf="@+id/Password1Layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputPassword2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number|textPassword"
+            tools:layout_editor_absoluteX="24dp"
+            tools:layout_editor_absoluteY="116dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_registrarme"
+        android:layout_width="234dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        android:text="Button"
+        android:theme="@style/boton_indigo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Password2Layout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
