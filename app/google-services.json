@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "107802857695",
+    "project_id": "sicuraapp-8a0e3",
+    "storage_bucket": "sicuraapp-8a0e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107802857695:android:d0ca51ce2001bc6429996a",
+        "android_client_info": {
+          "package_name": "com.example.sicuraapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA25QhrLSuhSDbLZr5Rzmdf3OPBV4hsFtQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
