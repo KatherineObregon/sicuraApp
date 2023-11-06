@@ -4,18 +4,18 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
-    private String key;
+    private String id;
     private String correo;
     private String nombreApellidos;
     private String celular;
     private String fotoUrl;
 
-    public String getKey() {
-        return key;
+    public String getId() {
+        return id;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCorreo() {

@@ -12,7 +12,7 @@
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
-        android:hint="Nombre de usuario"
+        android:hint="Nombres y apellidos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
             android:id="@+id/inputNombreUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="text"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="32dp" />
 
@@ -119,6 +119,7 @@
         android:layout_width="234dp"
         android:layout_height="50dp"
         android:layout_marginTop="36dp"
+        android:onClick="registroUsuario"
         android:text="Registrarme"
         android:theme="@style/boton_indigo"
         app:layout_constraintEnd_toEndOf="parent"
