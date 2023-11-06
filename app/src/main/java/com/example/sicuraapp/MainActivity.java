@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.sicuraapp.R;
+import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.launcher);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         botonEmpecemos = findViewById(R.id.btn_empecemos);
 

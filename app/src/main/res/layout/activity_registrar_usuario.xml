@@ -10,7 +10,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nombreUsuarioLayout"
         android:layout_width="350dp"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:hint="Nombre de usuario"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,12 +29,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/CorreoElectronicoLayout"
         android:layout_width="350dp"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:hint="Correo Electrónico"
         app:layout_constraintEnd_toEndOf="@+id/nombreUsuarioLayout"
@@ -53,15 +51,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/CelularLayout"
         android:layout_width="350dp"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:hint="Celular"
         app:layout_constraintEnd_toEndOf="@+id/CorreoElectronicoLayout"
@@ -82,7 +75,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Password1Layout"
         android:layout_width="350dp"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:hint="Contraseña"
         app:layout_constraintEnd_toEndOf="@+id/CelularLayout"
@@ -94,7 +87,7 @@
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number|textPassword"
+            android:inputType="textPassword"
             tools:layout_editor_absoluteX="24dp"
             tools:layout_editor_absoluteY="116dp" />
 
@@ -103,7 +96,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Password2Layout"
         android:layout_width="350dp"
-        android:layout_height="48dp"
+        android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:hint="Repita la contraseña"
         app:layout_constraintEnd_toEndOf="@+id/Password1Layout"
@@ -115,7 +108,7 @@
             android:id="@+id/inputPassword2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number|textPassword"
+            android:inputType="textPassword"
             tools:layout_editor_absoluteX="24dp"
             tools:layout_editor_absoluteY="116dp" />
 

@@ -94,9 +94,10 @@
         android:layout_height="154dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
+        android:onClick="irContactosConfianza"
+        android:src="@drawable/ic_contactos_confianza_foreground"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_contactos_confianza_foreground"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/btn_RecorridoTiempoReal"
