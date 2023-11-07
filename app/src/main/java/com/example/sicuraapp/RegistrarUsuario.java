@@ -73,7 +73,7 @@ public class RegistrarUsuario extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
                             finish();
-                            startActivity(new Intent(RegistrarUsuario.this, Launcher2.class));
+                            startActivity(new Intent(RegistrarUsuario.this, RegistroExito.class));
                             Toast.makeText(RegistrarUsuario.this, "Usuario registrado con exito.", Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
