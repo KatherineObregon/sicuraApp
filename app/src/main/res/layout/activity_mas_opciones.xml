@@ -95,6 +95,7 @@
         android:id="@+id/btn_MisRecorridos"
         android:layout_width="121dp"
         android:layout_height="121dp"
+        android:onClick="irAMiPerfil"
         android:src="@drawable/ic_mi_perfil2"
         app:layout_constraintBottom_toBottomOf="@+id/btn_RecorridosCompartidosConmigo"
         app:layout_constraintEnd_toEndOf="@+id/btn_MisRecorridos2"

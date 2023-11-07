@@ -26,7 +26,7 @@ public class AnadirContacto extends AppCompatActivity {
 
     TextInputEditText numeroContacto;
     Button btnAnadirContacto;
-    FirebaseFirestore mfirestore;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class AnadirContacto extends AppCompatActivity {
         FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
         firebaseAppCheck.installAppCheckProviderFactory(
                 PlayIntegrityAppCheckProviderFactory.getInstance());
-        mfirestore= FirebaseFirestore.getInstance();
+        db= FirebaseFirestore.getInstance();
 
         numeroContacto= findViewById(R.id.inputCelularContacto);
         btnAnadirContacto=findViewById(R.id.btn_anadirContacto);
@@ -60,7 +60,7 @@ public class AnadirContacto extends AppCompatActivity {
 
         Map<String, Object> map = new HashMap<>();
         map.put("celular", celular);
-        mfirestore.collection("pueba").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("pueba").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Toast.makeText(AnadirContacto.this, "Creado exitosamente", Toast.LENGTH_SHORT).show();
