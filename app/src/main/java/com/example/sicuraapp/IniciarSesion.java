@@ -25,6 +25,7 @@ public class IniciarSesion extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.vista_clara);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_sesion);
         mAuth= FirebaseAuth.getInstance();
