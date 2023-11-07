@@ -132,13 +132,14 @@ public class MiPerfil extends AppCompatActivity {
 
     public void actualizarMiPerfil(View view){
         String celularNuevo = celular.getText().toString();
-        usuario.setCelular(celularNuevo);
-        if(entroSubida){
 
-            usuario.setFotoUrl(imageUrl);
-        }
+
         Map<String, Object> usuario = new HashMap<>();
         usuario.put("celular", Objects.requireNonNull(celularNuevo));
+        if(entroSubida){
+
+            usuario.put("fotoUrl", Objects.requireNonNull(imageUrl));
+        }
         db.collection("user").document(currentUser.getUid()).update(usuario).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

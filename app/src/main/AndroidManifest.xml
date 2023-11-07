@@ -65,7 +65,9 @@
         </activity>
         <activity
             android:name=".IniciarSesion"
-            android:exported="false">
+            android:exported="false"
+            android:label="Iniciar sesión"
+            android:parentActivityName=".Launcher2">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
