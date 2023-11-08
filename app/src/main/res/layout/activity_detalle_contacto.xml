@@ -96,6 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:onClick="borrarContacto"
         android:text="Eliminar contacto"
         android:textColor="#FFFFFF"
         android:theme="@style/boton_rojo"
