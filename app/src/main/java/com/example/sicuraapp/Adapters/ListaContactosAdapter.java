@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.sicuraapp.ContactosConfianza;
+import com.example.sicuraapp.DetalleContacto;
 import com.example.sicuraapp.Entities.Usuario;
 import com.example.sicuraapp.R;
 
@@ -81,8 +83,9 @@ public class ListaContactosAdapter extends RecyclerView.Adapter<ListaContactosAd
                 public void onClick(View view) {
                     Log.d("msg","nombre:"+usuario.getNombreApellidos());
 
-                    //Intent intent = new Intent(view.getContext(), Membresia_CoordinadoresDetalle.class);
-                    //intent.putExtra("usuarioDetalle", usuario);
+                    Intent intent = new Intent(view.getContext(), DetalleContacto.class);
+                    intent.putExtra("usuarioDetalle", usuario);
+                    itemView.getContext().startActivity(intent);
 
                 }
             });
