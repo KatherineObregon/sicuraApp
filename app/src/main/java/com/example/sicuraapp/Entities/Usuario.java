@@ -1,6 +1,7 @@
 package com.example.sicuraapp.Entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Usuario implements Serializable {
 
@@ -9,6 +10,15 @@ public class Usuario implements Serializable {
     private String nombreApellidos;
     private String celular;
     private String fotoUrl;
+    private ArrayList<String> contactosID;
+
+    public ArrayList<String> getContactosID() {
+        return contactosID;
+    }
+
+    public void setContactosID(ArrayList<String> contactosID) {
+        this.contactosID = contactosID;
+    }
 
     public String getId() {
         return id;
