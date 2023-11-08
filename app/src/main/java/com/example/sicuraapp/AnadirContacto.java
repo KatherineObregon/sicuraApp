@@ -127,7 +127,33 @@ public class AnadirContacto extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
                     List<String> miListaContactos = (List<String>) documentSnapshot.get("contactosID");
-                    if(miListaContactos!=null){
+                    if(miListaContactos==null){
+
+                        ArrayList<String> miArrayListNueva = new ArrayList<>();
+                        miArrayListNueva.add(id);
+                        List<String> miListaNueva = new ArrayList<>(miArrayListNueva);
+
+                        Map<String, Object> data = new HashMap<>();
+                        //data.put("contactosID", miListaNueva);
+
+                        docRef.update("contactosID", miListaNueva)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        // Éxito al almacenar el ArrayList en Firestore
+                                        Toast.makeText(AnadirContacto.this, "Se agregó el primer contacto de confianza.", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Error al almacenar el ArrayList en Firestore
+                                        Log.w("TAG", "Error al almacenar el ArrayList en Firestore", e);
+                                    }
+                                });
+
+                    }
+                    else if(miListaContactos!=null && miListaContactos.size()<5){
                         //String nuevoContacto = celular;
                         String nuevoContacto= id;
                         miListaContactos.add(nuevoContacto);
@@ -144,6 +170,7 @@ public class AnadirContacto extends AppCompatActivity {
                         });
                     }else {
                         Log.d("msg", "No hay lista de contactos aun");
+                        Toast.makeText(AnadirContacto.this, "Superaste el número máximo de contactos de confianza.", Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Log.d("msg", "No existe referencia");
