@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.sicuraapp.Entities.Usuario;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.appcheck.FirebaseAppCheck;
@@ -20,7 +22,10 @@ import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderF
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +40,7 @@ public class AnadirContacto extends AppCompatActivity {
     Button btnAnadirContacto;
     FirebaseFirestore db;
     FirebaseUser currentUser;
-
+    Usuario nuevoContactoUser;
 
     Usuario usuario = new Usuario();
 
@@ -76,44 +81,79 @@ public class AnadirContacto extends AppCompatActivity {
 
     private void postContacto(String celular) {
 
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("celular", celular);
-//        db.collection("pueba").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//            @Override
-//            public void onSuccess(DocumentReference documentReference) {
-//                Toast.makeText(AnadirContacto.this, "Creado exitosamente", Toast.LENGTH_SHORT).show();
-//                finish();
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(AnadirContacto.this, "Error al ingresar", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        ArrayList<String> miArrayList = new ArrayList<>();
-        miArrayList.add("Elemento 1");
-        miArrayList.add("Elemento 2");
-        miArrayList.add("Elemento 3");
-        List<String> miLista = new ArrayList<>(miArrayList);
-        Map<String, Object> data = new HashMap<>();
-        data.put("contactosID", miLista);
 
-        DocumentReference docRef= db.collection("user").document(currentUser.getUid());
-
-        docRef.update(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("user").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(Void unused) {
-                Log.d("msg", "Funciona");
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                Boolean siHayContacto=false;
+                if(task.isSuccessful()){
+                    Log.d("msg-id", "entra a successful ");
+                    for (QueryDocumentSnapshot doc : task.getResult()){
+                        nuevoContactoUser = doc.toObject(Usuario.class);
+                        String celUsuario = nuevoContactoUser.getCelular();
+                        Log.d("msg-id", "celUsuario: "+celUsuario);
+                        if(celUsuario.equalsIgnoreCase(celular)){
+                            siHayContacto=true;
+                            Log.d("msg-id", "si entra al if del cel");
+                            finish();
+                            anadirContactoPorID(nuevoContactoUser.getId());
+                        }
+
+                    }
+                    if (!siHayContacto){
+                        Toast.makeText(AnadirContacto.this, "El número ingresado no cuenta con un usuario en la aplicación.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d("msg", "no funciona");
+               Log.d("msg-id", "error al cargar");
             }
         });
 
 
 
 
+    }
+
+    public void anadirContactoPorID(String id){
+        Log.d("msg-id", "Nuevo contacto: "+nuevoContactoUser.getId());
+        DocumentReference docRef= db.collection("user").document(currentUser.getUid());
+
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    List<String> miListaContactos = (List<String>) documentSnapshot.get("contactosID");
+                    if(miListaContactos!=null){
+                        //String nuevoContacto = celular;
+                        String nuevoContacto= id;
+                        miListaContactos.add(nuevoContacto);
+                        docRef.update("contactosID", miListaContactos).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(AnadirContacto.this, "Contacto agreagado correctamente.", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AnadirContacto.this, "Error al agregar contacto.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }else {
+                        Log.d("msg", "No hay lista de contactos aun");
+                    }
+                }else {
+                    Log.d("msg", "No existe referencia");
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("msg", "Error con documento");
+            }
+        });
     }
 }
