@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/imageViewProfile"
-        android:layout_width="76dp"
-        android:layout_height="61dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
@@ -20,10 +20,10 @@
         android:id="@+id/textviewNombrePersona"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:text="TextView"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageViewProfile"
         app:layout_constraintTop_toTopOf="@+id/imageViewProfile" />
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="TextView"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/textviewNombrePersona"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textviewNombrePersona"
@@ -42,12 +42,12 @@
 
     <Button
         android:id="@+id/btnDetallesPersona"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="72dp"
+        android:layout_height="41dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:text="Detalles"
-        android:theme="@style/boton_indigo"
+        android:layout_marginEnd="16dp"
+        android:text="Ver"
+        android:theme="@style/boton_circulo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

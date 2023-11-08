@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.sicuraapp.Entities.Usuario;
 import com.example.sicuraapp.R;
 
@@ -49,7 +50,7 @@ public class ListaContactosAdapter extends RecyclerView.Adapter<ListaContactosAd
         String celularUsuarioString = usuario.getCelular();
         if(usuario.getFotoUrl()!=null){
             String urlImage = usuario.getFotoUrl();
-            //Glide.with(imageView).load(urlImage).into(imageView);
+            Glide.with(imageView).load(urlImage).into(imageView);
 
         }
         nombreUsuario.setText(nombreUsuarioString);
