@@ -107,6 +107,7 @@
         android:layout_width="121dp"
         android:layout_height="121dp"
         android:layout_marginEnd="50dp"
+        android:onClick="iraCompartirRuta"
         android:src="@drawable/ic_compartir_ruta2"
         app:layout_constraintBottom_toBottomOf="@+id/btn_contactosConfianza"
         app:layout_constraintEnd_toEndOf="parent"
