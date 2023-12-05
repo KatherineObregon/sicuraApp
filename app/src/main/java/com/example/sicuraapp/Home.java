@@ -52,14 +52,12 @@ public class Home extends AppCompatActivity {
         // Obtiene la fecha y hora actual
         Date currentDate = new Date();
 
-        // Define el formato deseado para la fecha y hora, incluyendo milisegundos
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault());
+        // Define el formato deseado para la fecha y hora
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
         // Formatea la fecha y hora actual como un String separado por un guion
         String formattedDateTime = dateFormat.format(currentDate);
         String[] dateTimeParts = formattedDateTime.split(" ");
-
-        // Elimina los espacios en blanco y concatena las partes con un guion
         String fechaHora= dateTimeParts[0].replace("-", "") + "-" + dateTimeParts[1].replace(":", "");
 
         String idAlerta = idUsuarioActual+fechaHora;
