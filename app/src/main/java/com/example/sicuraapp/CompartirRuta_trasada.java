@@ -6,8 +6,10 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.codebyashish.googledirectionapi.AbstractRouting;
@@ -27,6 +29,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.RoundCap;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
@@ -40,6 +45,7 @@ public class CompartirRuta_trasada extends AppCompatActivity implements OnMapRea
 
     double userLat, userLong;
     private LatLng destinoLocation, userLocation;
+    private ArrayList<Polyline> polyline = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +141,20 @@ public class CompartirRuta_trasada extends AppCompatActivity implements OnMapRea
     @Override
     public void onRouteSuccess(ArrayList<RouteInfoModel> list, int indexing) {
         Toast.makeText(this, "Ruta exitosa", Toast.LENGTH_SHORT).show();
+        PolylineOptions polylineOptions = new PolylineOptions();
+        ArrayList<Polyline> polylines = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (i == indexing) {
+                Log.e("msg", "onRoutingSuccess: routeIndexing" + indexing);
+                polylineOptions.color(Color.BLACK);
+                polylineOptions.width(12);
+                polylineOptions.addAll(list.get(indexing).getPoints());
+                polylineOptions.startCap(new RoundCap());
+                polylineOptions.endCap(new RoundCap());
+                Polyline polyline = map.addPolyline(polylineOptions);
+                polylines.add(polyline);
+            }
+        }
 
     }
 
