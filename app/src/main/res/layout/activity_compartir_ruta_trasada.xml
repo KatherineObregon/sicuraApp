@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Encontrar ruta"
+        android:onClick="encontrarRuta"
         android:theme="@style/boton_indigo"
         app:layout_constraintEnd_toEndOf="@+id/mapa_compartir2_trasado"
         app:layout_constraintStart_toStartOf="@+id/mapa_compartir2_trasado"

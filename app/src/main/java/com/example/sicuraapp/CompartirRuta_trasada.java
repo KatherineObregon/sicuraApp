@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.codebyashish.googledirectionapi.AbstractRouting;
@@ -78,21 +79,31 @@ public class CompartirRuta_trasada extends AppCompatActivity implements OnMapRea
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(@NonNull LatLng latLng) {
-                dialog.setMessage("La ruta se está generando. Por favor, espere.");
-                dialog.show();
+//                dialog.setMessage("La ruta se está generando. Por favor, espere.");
+//                dialog.show();
                 map.clear();
                 destinoLocation =latLng;
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
                 map.addMarker(markerOptions);
 
-                getRoute(userLocation, destinoLocation);
+                //getRoute(userLocation, destinoLocation);
 
             }
         });
 
         fetchMyLocation();
 
+    }
+
+    public void encontrarRuta(View view){
+        if(userLocation!=null && destinoLocation!=null){
+            dialog.setMessage("La ruta se está generando. Por favor, espere.");
+            dialog.show();
+            getRoute(userLocation, destinoLocation);
+        }else {
+            Toast.makeText(this, "Seleccione en el mapa el destino.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void getRoute(LatLng userLocation, LatLng destinoLocation) {
