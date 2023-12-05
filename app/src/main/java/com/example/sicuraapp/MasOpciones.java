@@ -42,7 +42,8 @@ public class MasOpciones extends AppCompatActivity {
     }
 
     public void iraCompartirRuta (View view){
-        Intent intent= new Intent(MasOpciones.this, CompartirRuta.class);
+        //Intent intent= new Intent(MasOpciones.this, CompartirRuta2.class);
+        Intent intent= new Intent(MasOpciones.this, CompartirRuta_trasada.class);
         startActivity(intent);
     }
 
