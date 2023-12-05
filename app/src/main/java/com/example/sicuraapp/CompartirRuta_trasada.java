@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -47,6 +48,8 @@ public class CompartirRuta_trasada extends AppCompatActivity implements OnMapRea
     private LatLng destinoLocation, userLocation;
     private ArrayList<Polyline> polyline = null;
 
+    private ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,8 @@ public class CompartirRuta_trasada extends AppCompatActivity implements OnMapRea
         if(mapFragment!=null){
             mapFragment.getMapAsync(this);
         }
+
+        dialog = new ProgressDialog(CompartirRuta_trasada.this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
@@ -73,6 +78,8 @@ public class CompartirRuta_trasada extends AppCompatActivity implements OnMapRea
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(@NonNull LatLng latLng) {
+                dialog.setMessage("La ruta se está generando. Por favor, espere.");
+                dialog.show();
                 map.clear();
                 destinoLocation =latLng;
                 MarkerOptions markerOptions = new MarkerOptions();
@@ -146,7 +153,7 @@ public class CompartirRuta_trasada extends AppCompatActivity implements OnMapRea
         for (int i = 0; i < list.size(); i++) {
             if (i == indexing) {
                 Log.e("msg", "onRoutingSuccess: routeIndexing" + indexing);
-                polylineOptions.color(Color.BLACK);
+                polylineOptions.color(Color.BLUE);
                 polylineOptions.width(12);
                 polylineOptions.addAll(list.get(indexing).getPoints());
                 polylineOptions.startCap(new RoundCap());
@@ -155,6 +162,7 @@ public class CompartirRuta_trasada extends AppCompatActivity implements OnMapRea
                 polylines.add(polyline);
             }
         }
+        dialog.dismiss();
 
     }
 
