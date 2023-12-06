@@ -3,8 +3,13 @@ package com.example.sicuraapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,6 +47,7 @@ public class Home extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore db;
     String idUsuarioActual;
+    private String chanNotifDefaultId = "chanNotifDefaultId";
 
 
     private List<Usuario> firebaseUsuarios = new ArrayList<>();
@@ -51,12 +57,12 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.home);
         super.onCreate(savedInstanceState);
-
-
+        
 
         setContentView(R.layout.activity_home);
         logout = findViewById(R.id.btn_logout);
 
+        createNotificationChannel();
 
         mAuth= FirebaseAuth.getInstance();
         db= FirebaseFirestore.getInstance();
@@ -108,6 +114,7 @@ public class Home extends AppCompatActivity {
                     String usuarioAlerta = alertaNueva.getIdUsuario();
 
                     //firabeseUsuariosContactos.clear();
+                    recibirNotificacion("Ariana Castro");
 
                     DocumentReference docRef= db.collection("user").document(usuarioAlerta);
                     docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -131,8 +138,9 @@ public class Home extends AppCompatActivity {
 
                                                 Log.d("msg", "entra a igual "+ cont);
                                                 //firabeseUsuariosContactos.add(u);
+
                                                 if(cont.equalsIgnoreCase(mAuth.getCurrentUser().getUid())){
-                                                    recibirNotificacion();
+                                                    //recibirNotificacion();
                                                 }
                                             }
                                         }
@@ -164,7 +172,29 @@ public class Home extends AppCompatActivity {
 
     }
 
-    private void recibirNotificacion() {
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= 26) {
+            NotificationChannel channelDefault = new NotificationChannel(chanNotifDefaultId, "Canal notificaciones 3", NotificationManager.IMPORTANCE_DEFAULT);
+            channelDefault.setDescription("Canal de notificaciones con importancia = DEFAULT");
+            channelDefault.enableVibration(true);
+
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channelDefault);
+        }
+    }
+
+    private void recibirNotificacion(String nombresAlerta) {
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, chanNotifDefaultId)
+                .setSmallIcon(R.drawable.ic_sicura_logo_letras).
+                setContentTitle("sicuraApp")
+                .setContentText("Tu contacto "+nombresAlerta+" se encuentra en peligro." )
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManagerCompat= NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(3, builder.build());
 
     }
 
