@@ -1,6 +1,7 @@
 package com.example.sicuraapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,7 +15,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,8 +48,25 @@ public class Home extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         db= FirebaseFirestore.getInstance();
 
+        db.collection("alerta").addSnapshotListener((queryDocumentSnapshots, e) -> {
+            if (e != null) {
+                // Maneja errores aquí
+                return;
+            }
+
+            // Procesa los cambios en la colección "alerta"
+            for (DocumentChange
+                    documentChange : queryDocumentSnapshots.getDocumentChanges()) {
+                if (documentChange.getType() == DocumentChange.Type.ADDED) {
+                    // Si se añade un nuevo documento, muestra un Toast
+                    Toast.makeText(this, "Nuevo documento en la coleccion", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
     }
+
 
     public void botonAlerta(View view){
         idUsuarioActual= mAuth.getCurrentUser().getUid();
@@ -72,7 +94,7 @@ public class Home extends AppCompatActivity {
             public void onSuccess(Void unused) {
 //                finish();
 //                startActivity(new Intent(Home.this, Home.class));
-                Toast.makeText(Home.this, "Alerta creada", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Home.this, "Alerta creada", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
