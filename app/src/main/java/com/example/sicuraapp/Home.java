@@ -141,6 +141,7 @@ public class Home extends AppCompatActivity {
 
                                                 if(cont.equalsIgnoreCase(mAuth.getCurrentUser().getUid())){
                                                     //recibirNotificacion();
+                                                    recibirNotificacion(u.getNombreApellidos());
                                                 }
                                             }
                                         }
@@ -187,7 +188,7 @@ public class Home extends AppCompatActivity {
     private void recibirNotificacion(String nombresAlerta) {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, chanNotifDefaultId)
-                .setSmallIcon(R.drawable.ic_sicura_logo_letras).
+                .setSmallIcon(R.mipmap.ic_sicura_logo_letras_foreground).
                 setContentTitle("sicuraApp")
                 .setContentText("Tu contacto "+nombresAlerta+" se encuentra en peligro." )
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
